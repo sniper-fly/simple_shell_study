@@ -1,15 +1,19 @@
 NAME = lsh
 
 CC = gcc
-CFLAGS = -I./
+CFLAGS = -I./incl -g
 
 SRCS = ${shell find ./src -type f -name "*.c"}
-OBJS = ${SRCS:.c=.o}
+OBJS = $(addprefix objects/, $(notdir $(SRCS:.c=.o)))
+# OBJS = $(SRCS:%.c=%.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+
+objects/%.o: objects/%.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -rf $(OBJS)
