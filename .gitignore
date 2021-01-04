@@ -1,0 +1,4 @@
+objects/*.c
+*.o
+*.d
+lsh
