@@ -5,7 +5,8 @@
 
 int		lsh_launch(char **args)
 {
-	pid_t	pid, wpid;
+	pid_t	pid;
+	pid_t	wpid;
 	int		status;
 
 	pid = fork();
@@ -22,6 +23,7 @@ int		lsh_launch(char **args)
 	{
 		do {
 			wpid = waitpid(pid, &status, WUNTRACED);
+			(void)wpid;
 		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
 	}
 	return (1);
