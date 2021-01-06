@@ -12,7 +12,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
-objects/%.o: objects/%.c
+objects/%.o: src/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
