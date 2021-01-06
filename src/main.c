@@ -1,9 +1,9 @@
 #include "lsh.h"
 #include <stdlib.h>
 
-int		main(int argc, char **argv)
+int		main(void)
 {
-	// lsh_loop();
+	lsh_loop();
 
 	return (EXIT_SUCCESS);
 }
