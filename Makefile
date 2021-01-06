@@ -1,7 +1,7 @@
 NAME = lsh
 
 CC = gcc
-CFLAGS = -I./incl -g
+CFLAGS = -I./incl -Wall -Wextra -Werror -fsanitize=address -g
 
 SRCS = ${shell find ./src -type f -name "*.c"}
 OBJS = $(addprefix objects/, $(notdir $(SRCS:.c=.o)))
