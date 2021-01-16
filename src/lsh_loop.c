@@ -1,3 +1,4 @@
+#include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include "lsh.h"
@@ -9,7 +10,7 @@ void	lsh_loop(void)
 	int		status;
 
 	do {
-		printf("> ");
+		write(STDOUT_FILENO, "> ", 2);
 		line = lsh_read_line();
 		args = lsh_split_line(line);
 		status = lsh_execute(args);

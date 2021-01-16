@@ -12,5 +12,6 @@ int		lsh_launch(char **args);
 int		lsh_cd(char **args);
 int		lsh_exit(char **args);
 int		lsh_execute(char **args);
+int		get_next_line(int fd, char **line);
 
 #endif
