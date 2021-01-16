@@ -1,7 +1,16 @@
 #include "lsh.h"
+#include <unistd.h>
 #include <sys/types.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <signal.h>
+
+volatile sig_atomic_t e_flag = 0;
+
+void abrt_handler(int sig) {
+	(void)sig;
+	e_flag = 1;
+}
 
 char	*lsh_read_line(void)
 {
@@ -13,9 +22,20 @@ char	*lsh_read_line(void)
 	if (!buffer)//allocation error
 		exit(EXIT_FAILURE);
 	
+	if ( signal(SIGINT, abrt_handler) == SIG_ERR ) {
+		exit(1);
+	}
+	
 	while (1)
 	{
+		// read(0, buf, 100);
 		c = getchar();
+		if (e_flag)
+		{
+			printf("\n");
+			e_flag = 0;
+			// return (NULL);
+		}
 
 		if (c == EOF || c == '\n')
 		{
