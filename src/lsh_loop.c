@@ -22,3 +22,13 @@ void	lsh_loop(void)
 		free(args);
 	} while (status);
 }
+
+// A | B | C ; D ; E | F ; G
+
+// cd
+// export
+// unset
+// A B C
+// export foo=foo
+// E F
+// G

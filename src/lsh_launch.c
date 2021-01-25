@@ -21,10 +21,10 @@ int		lsh_launch(char **args)
 		perror("lsh");
 	else
 	{
-		// do {
+		do {
 			wpid = waitpid(pid, &status, WUNTRACED);
 			(void)wpid;
-		// } while (!WIFEXITED(status) && !WIFSIGNALED(status));
+		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
 	}
 	return (1);
 }
